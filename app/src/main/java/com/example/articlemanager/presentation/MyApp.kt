@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -20,13 +21,14 @@ import com.example.articlemanager.presentation.model.Article
 @Composable
 fun MyApp(
     modifier: Modifier,
-    articleRepository: ArticleRepositoryImpl
+    articleListViewModel: ArticleListViewModel
 ) {
-    val articles = remember { mutableStateOf<List<Article>>(emptyList()) }
-    LaunchedEffect(Unit) {
-        articles.value = articleRepository.getArticles()
-    }
+//    val articles = remember { mutableStateOf<List<Article>>(emptyList()) }
+//    LaunchedEffect(Unit) {
+//        articles.value = articleRepository.getArticles()
+//    }
 
+    val articles = articleListViewModel.articles.collectAsState()
     LazyColumn(modifier = modifier) {
         items(items = articles.value) { article ->
             ItemArticle(article = article)

@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -53,7 +54,7 @@ dependencies {
     implementation(libs.ktor.ktor.client.core)
     // Android engine
     implementation(libs.ktor.ktor.client.okhttp)
-    //
+    // Android client
     implementation(libs.ktor.client.android)
     // Content negotiation (JSON)
     implementation(libs.ktor.client.content.negotiation)
@@ -61,6 +62,10 @@ dependencies {
     implementation(libs.ktor.serialization.kotlinx.json)
     // Logging (optional but useful)
     implementation(libs.ktor.client.logging)
+
+    // Room DB
+    implementation(libs.room.runtime)
+    ksp(libs.room.compilter)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

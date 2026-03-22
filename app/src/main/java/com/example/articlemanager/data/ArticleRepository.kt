@@ -1,11 +1,10 @@
 package com.example.articlemanager.data
 
 import com.example.articlemanager.presentation.model.Article
-import com.example.articlemanager.data.MockArticleProvider
+import kotlinx.coroutines.flow.Flow
 
 interface ArticleRepository {
-    //    suspend fun getArticles(): List<Article> {
-//        return MockArticleProvider.articles
-//    }
-    suspend fun getArticles(): List<Article>
+    suspend fun observeArticles(): Flow<List<Article>>
+
+    suspend fun getArticles()
 }
