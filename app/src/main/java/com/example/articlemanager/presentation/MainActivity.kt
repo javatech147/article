@@ -14,6 +14,9 @@ import com.example.articlemanager.data.remote.ApiService
 import com.example.articlemanager.data.remote.KtorClient
 import com.example.articlemanager.domain.ArticleRepositoryImpl
 import com.example.articlemanager.presentation.theme.ArticleManagerTheme
+import com.example.articlemanager.presentation.ui.ArticleListScreen
+import com.example.articlemanager.presentation.viewmodel.ArticleListViewModel
+import com.example.articlemanager.presentation.viewmodel.ArticleListViewModelFactory
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,11 +24,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ArticleManagerTheme {
-                Scaffold(modifier = Modifier.Companion.fillMaxSize()) { innerPadding ->
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+
+                    // Manual DI
                     val ktorClient = KtorClient
                     val apiService = ApiService(ktorClient)
 
-                    val articleDb = ArticleDB.getInstance(this)
+                    val articleDb = ArticleDB.getInstance(context = this)
                     val articleRepositoryImpl = ArticleRepositoryImpl(
                         apiService = apiService,
                         articleDao = articleDb.getDao()
@@ -33,10 +38,10 @@ class MainActivity : ComponentActivity() {
 
                     val articleListViewModelFactory =
                         ArticleListViewModelFactory(articleRepositoryImpl = articleRepositoryImpl)
-                    val articleViewModel by viewModels<ArticleListViewModel>() { articleListViewModelFactory }
+                    val articleViewModel by viewModels<ArticleListViewModel> { articleListViewModelFactory }
 
 
-                    MyApp(
+                    ArticleListScreen(
                         modifier = Modifier.padding(innerPadding),
                         articleListViewModel = articleViewModel
                     )

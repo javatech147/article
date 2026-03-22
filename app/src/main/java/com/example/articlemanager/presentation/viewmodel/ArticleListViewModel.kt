@@ -1,4 +1,4 @@
-package com.example.articlemanager.presentation
+package com.example.articlemanager.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
