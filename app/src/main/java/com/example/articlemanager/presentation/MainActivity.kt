@@ -1,4 +1,4 @@
-package com.example.articlemanager
+package com.example.articlemanager.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import com.example.articlemanager.data.remote.ApiService
 import com.example.articlemanager.data.remote.KtorClient
 import com.example.articlemanager.domain.ArticleRepositoryImpl
-import com.example.articlemanager.ui.theme.ArticleManagerTheme
+import com.example.articlemanager.presentation.theme.ArticleManagerTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,13 +19,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ArticleManagerTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Scaffold(modifier = Modifier.Companion.fillMaxSize()) { innerPadding ->
                     val ktorClient = KtorClient
                     val apiService = ApiService(ktorClient)
                     val articleRepository = ArticleRepositoryImpl(apiService)
 
                     MyApp(
-                        modifier = Modifier.padding(innerPadding),
+                        modifier = Modifier.Companion.padding(innerPadding),
                         articleRepository = articleRepository
                     )
                 }

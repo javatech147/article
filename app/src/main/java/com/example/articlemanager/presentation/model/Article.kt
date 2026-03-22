@@ -1,4 +1,4 @@
-package com.example.articlemanager
+package com.example.articlemanager.presentation.model
 
 data class Article(
     val id: Int,

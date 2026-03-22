@@ -1,4 +1,4 @@
-package com.example.articlemanager.ui.theme
+package com.example.articlemanager.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

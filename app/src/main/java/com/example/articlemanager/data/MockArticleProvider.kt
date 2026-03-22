@@ -1,4 +1,6 @@
-package com.example.articlemanager
+package com.example.articlemanager.data
+
+import com.example.articlemanager.presentation.model.Article
 
 object MockArticleProvider {
     val articles = listOf(
