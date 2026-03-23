@@ -33,8 +33,9 @@ class MainActivity : ComponentActivity() {
 }
 
 sealed class Screen(val route: String) {
-    object ArticleListScreen : Screen("article_list")
-    object ArticleDetailsScreen : Screen("article_details/{article_id}") {
+    object ArticleListScreen : Screen(route = "article_list")
+    object ArticleDetailsScreen : Screen(route = "article_details/{article_id}") {
+        const val ARGS_ARTICLE_ID = "article_id"
         fun createRoute(articleId: Int) = "article_details/$articleId"
     }
 }
