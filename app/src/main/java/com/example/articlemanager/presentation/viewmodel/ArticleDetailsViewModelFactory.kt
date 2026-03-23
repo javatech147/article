@@ -2,12 +2,12 @@ package com.example.articlemanager.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.articlemanager.data.ArticleRepository
+import com.example.articlemanager.data.ArticleDetailsRepository
 
-class ArticleListViewModelFactory(
-    private val articleRepository: ArticleRepository
+class ArticleDetailsViewModelFactory(
+    private val articleDetailsRepository: ArticleDetailsRepository
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return ArticleListViewModel(articleRepository) as T
+        return ArticleDetailsViewModel(articleDetailsRepository) as T
     }
 }

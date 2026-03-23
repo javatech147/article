@@ -67,6 +67,9 @@ dependencies {
     implementation(libs.room.runtime)
     ksp(libs.room.compilter)
 
+    // navigation
+    implementation(libs.androidx.navigation.compose)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
